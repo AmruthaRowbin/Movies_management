@@ -1,0 +1,191 @@
+{
+	"info": {
+		"_postman_id": "75c8aa83-e209-449e-bfbc-ddd20c11b3a2",
+		"name": "Movie",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29045359"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"user@gmail.com\",\r\n  \"password\": \"user123\",\r\n  \"role\": \"user\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/auth/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"auth",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "login",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "movies",
+			"item": [
+				{
+					"name": "createMovies",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY4MjhkODMxZmFmODM3Y2VjMmEzMCIsImlhdCI6MTc1MjE1MzM2NSwiZXhwIjoxNzUyMjM5NzY1fQ.ZA2M_NiFKB_lhhCktXfki0-XZRb6iMZi2W5y2BIbqTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Inception\",\r\n  \"rating\": 4.8,\r\n  \"genres\": [\"Sci-Fi\", \"Thriller\"],\r\n  \"watchedUsers\": [\"user1\", \"user2\"]\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movie/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bulk-upload",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY4MjhkODMxZmFmODM3Y2VjMmEzMCIsImlhdCI6MTc1MjE1MzM2NSwiZXhwIjoxNzUyMjM5NzY1fQ.ZA2M_NiFKB_lhhCktXfki0-XZRb6iMZi2W5y2BIbqTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "/C:/Users/amrth/OneDrive/Desktop/movie.xlsx"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:5000/movie/bulk-upload",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movie",
+								"bulk-upload"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "GetMovie",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY4NmY4MjhkODMxZmFmODM3Y2VjMmEzMCIsImlhdCI6MTc1MjE1MzM2NSwiZXhwIjoxNzUyMjM5NzY1fQ.ZA2M_NiFKB_lhhCktXfki0-XZRb6iMZi2W5y2BIbqTQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/movies?genres=Action&page=1&limit=5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"movies"
+							],
+							"query": [
+								{
+									"key": "genres",
+									"value": "Action"
+								},
+								{
+									"key": "page",
+									"value": "1"
+								},
+								{
+									"key": "limit",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
